@@ -18,7 +18,7 @@ function setup() {
 }
 
 function draw() {
-  //  background(255 - SHADE);
+// background(255 - SHADE);
   translate(startX, startY)
   
   startX =  noise(xoffset) * width;
