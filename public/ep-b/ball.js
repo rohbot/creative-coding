@@ -1,5 +1,5 @@
 class Ball {
-  constructor(x, y, vel, scale) {
+  constructor(x, y, vel, scale, w) {
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(0, vel);
     this.position = createVector(x, y);
@@ -17,11 +17,11 @@ class Ball {
     // this.meter.normalRange = true; // 0-1
     // this.lfo.connect(this.meter);
 
-    let pos = map(x, 0, width, 0, scale.length)
+    let pos = floor(map(x, 0, w, 0, scale.length))
     this.note = scale[pos];
-
-    this.synth = new Tone.Synth();
-    this.synth.connect(mixer);
+    console.log(this.note, pos)
+    this.synth = new Tone.Synth().toDestination();
+    
 
   }
 
@@ -59,10 +59,11 @@ class Ball {
     }
     if (this.position.y < -this.r || this.position.y > height + this.r) {
       this.velocity.y = - this.velocity.y;
+      this.synth.triggerAttackRelease(this.note, "8n");
       wrapped = true
     }
     if (this.position.y > height + this.r){
-      this.synth.triggerAttackRelease(this.note, "8n");
+      
     }
     if(wrapped){
       this.path = []

@@ -2,7 +2,7 @@ let ready = false;
 let masterVolume = -9; 
 let balls = []
 
-let MAX_BALLS = 10;
+let MAX_BALLS = 50;
 
 let STROKE = 255;
 
@@ -64,7 +64,7 @@ function initializeAudio() {
   let flavour = "minor pentatonic";
   // scale = Tonal.Scale.get("C3 " + flavour).notes;
   // scale = scale.concat(Tonal.Scale.get("C4 " + flavour).notes);
-  scale = Tonal.Scale.get("C5 " + flavour);
+  scale = Tonal.Scale.get("C4 " + flavour).notes;
 
 
 
@@ -122,7 +122,7 @@ function startAudio() {
 function touchStarted() {
   startAudio()
   let vel = map(mouseY, 0, height, 10, 1)
-  let b = new Ball(mouseX, mouseY, vel, scale);
+  let b = new Ball(mouseX, mouseY, vel, scale, width);
   if (balls.length > MAX_BALLS) {
     balls.shift()
   }
