@@ -1,7 +1,7 @@
 let img;
 let pos1, pos2, x,y;
 function preload() {
-  img = loadImage('b2.jpg');
+  img = loadImage('bae_small.jpg');
 }
 
 function setup() {
