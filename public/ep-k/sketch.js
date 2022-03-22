@@ -5,7 +5,7 @@ let sp_n = spacing /1;
 let h_dots, v_dots;
 
 class Dot {
-	constructor(x, y, offset = 0.005, range = 1000) {
+	constructor(x, y, offset = 0.001, range = 1000) {
 		this.offset = offset
 		this.n = random(range)
 		this.x = x;
